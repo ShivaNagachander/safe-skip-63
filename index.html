@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AU 4-1 A63 Attendance Tracker</title>
+  <style>
+    body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+    .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc; }
+    h1 { text-align: center; }
+    input, button { width: 100%; padding: 10px; margin: 10px 0; }
+    p { background: #e9e9e9; padding: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>AU 4-1 A63 Attendance Tracker</h1>
+
+  <label for="attendance">Enter Current Attendance %:</label>
+  <input type="number" id="attendance" placeholder="e.g. 78" min="0" max="100">
+
+  <label for="date">Enter Today's Date:</label>
+  <input type="date" id="date">
+
+  <button onclick="calculate()">Calculate Attendance Details</button>
+
+  <div id="output"></div>
+</div>
+
+<script>
+function calculate() {
+  const attendance = parseFloat(document.getElementById('attendance').value);
+  const today = new Date(document.getElementById('date').value);
+  const startDate = new Date("2025-06-30");
+
+  if (isNaN(attendance) || !today) {
+    alert("Please enter valid attendance % and date.");
+    return;
+  }
+
+  // Calculate total working days excluding weekends + 4 holidays
+  let totalDays = 0;
+  let currentDate = new Date(startDate);
+
+  const holidays = [
+    "2025-08-15", // Independence Day
+    "2025-10-02", // Gandhi Jayanti
+    "2025-09-02", // Ganesh Chaturthi
+    "2025-09-07"  // Milad-un-Nabi (example)
+  ];
+
+  while (currentDate <= today) {
+    const day = currentDate.getDay();
+    const dateStr = currentDate.toISOString().split('T')[0];
+    if (day !== 0 && day !== 6 && !holidays.includes(dateStr)) {
+      totalDays++;
+    }
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+
+  // Classes attended so far
+  const attended = (attendance / 100) * totalDays;
+
+  // Required attended classes for 75% and 70%
+  const required75 = 0.75 * totalDays;
+  const required70 = 0.70 * totalDays;
+
+  // Allowed skips for 75% and 70%
+  const allowedSkips75 = attended - required75;
+  const allowedSkips70 = attended - required70;
+
+  // Output
+  document.getElementById('output').innerHTML = `
+    <p><strong>Total Working Days till Today:</strong> ${totalDays}</p>
+    <p><strong>Classes Attended (calculated):</strong> ${attended.toFixed(1)}</p>
+    <p><strong>Minimum required for 75%:</strong> ${required75.toFixed(1)}</p>
+    <p><strong>Minimum required for 70%:</strong> ${required70.toFixed(1)}</p>
+    <p><strong>Remaining days you can skip to stay above 75%:</strong> ${allowedSkips75 >= 0 ? allowedSkips75.toFixed(1) : "None, you are below 75%!"}</p>
+    <p><strong>Remaining days you can skip to stay above 70%:</strong> ${allowedSkips70 >= 0 ? allowedSkips70.toFixed(1) : "None, you are below 70%!"}</p>
+  `;
+}
+</script>
+
+</body>
+</html>
