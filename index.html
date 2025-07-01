@@ -3,81 +3,190 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AU 4-1 A63 Attendance Tracker</title>
+  <title>OnE Last Sem JINDABAD</title>
   <style>
-    body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
-    .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc; }
+    body { font-family: Arial, sans-serif; background: #f8f8f8; margin: 0; padding: 0; }
+    nav { background: #333; color: #fff; padding: 15px; text-align: center; font-size: 18px; }
+    .container { max-width: 800px; margin: auto; background: #fff; padding: 30px; box-shadow: 0 0 10px #aaa; margin-top: 20px; }
     h1 { text-align: center; }
-    input, button { width: 100%; padding: 10px; margin: 10px 0; }
-    p { background: #e9e9e9; padding: 10px; border-radius: 5px; }
+    input, button { width: 100%; padding: 12px; margin: 10px 0; font-size: 16px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+    th, td { border: 1px solid #999; padding: 8px; text-align: center; }
+    th { background: #eee; }
+    p { background: #f2f2f2; padding: 10px; border-left: 4px solid #333; }
+    footer { text-align: center; margin: 20px; color: #777; }
+    .output-box { background: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
   </style>
 </head>
 <body>
 
+<nav>OnE Last Sem JINDABAD</nav>
+
 <div class="container">
-  <h1>AU 4-1 A63 Attendance Tracker</h1>
+  <p>Attendance is trauma, life is homa, job is coma, people are dumma,college is chumma</p>
+  <p>The prediction in this website is not accurate as your chatgpt prompt and social life</p>
+  
 
-  <label for="attendance">Enter Current Attendance %:</label>
-  <input type="number" id="attendance" placeholder="e.g. 78" min="0" max="100">
+  <label>Enter Current Attendance % :</label>
+  <input type="number" id="attendance" placeholder="e.g. 78.5">
 
-  <label for="date">Enter Today's Date:</label>
+  <label>Enter Current Date :</label>
   <input type="date" id="date">
 
-  <button onclick="calculate()">Calculate Attendance Details</button>
+  <button onclick="calculate()">Calculate Attendance Plan</button>
 
-  <div id="output"></div>
+  <div id="output" class="output-box"></div>
+
+  <h2>Your Timetable</h2>
+  <table>
+    <tr>
+      <th>Day/Time</th>
+      <th>09:00-09:55</th>
+      <th>09:55-10:50</th>
+      <th>10:50-11:45</th>
+      <th>11:45-12:40</th>
+      <th>12:40-01:25</th>
+      <th>01:25-02:15</th>
+      <th>02:15-03:10</th>
+    </tr>
+    <tr>
+      <td>Monday</td>
+      <td>DL</td>
+      <td>DL LAB</td>
+      <td>DL LAB</td>
+      <td>DL LAB</td>
+      <td>Lunch</td>
+      <td>CIS</td>
+      <td>PM</td>
+    </tr>
+    <tr>
+      <td>Tuesday</td>
+      <td>MEFA</td>
+      <td>FBT</td>
+      <td>CIS</td>
+      <td>DL</td>
+      <td>Lunch</td>
+      <td>FCC</td>
+      <td>PM</td>
+    </tr>
+    <tr>
+      <td>Wednesday</td>
+      <td>FBT</td>
+      <td>CIS</td>
+      <td>DL</td>
+      <td>FCC</td>
+      <td>Lunch</td>
+      <td>MEFA</td>
+      <td>PM</td>
+    </tr>
+    <tr>
+      <td>Thursday</td>
+      <td>FBT</td>
+      <td>MEFA</td>
+      <td>FCC</td>
+      <td>DL</td>
+      <td>Lunch</td>
+      <td>IOMP</td>
+      <td>IOMP</td>
+    </tr>
+    <tr>
+      <td>Friday</td>
+      <td>CIS</td>
+      <td>CIS LAB</td>
+      <td>CIS LAB</td>
+      <td>CIS LAB</td>
+      <td>Lunch</td>
+      <td>IOMP</td>
+      <td>IOMP</td>
+    </tr>
+  </table>
+
 </div>
+
+<footer>Made by NC with depression</footer>
 
 <script>
 function calculate() {
   const attendance = parseFloat(document.getElementById('attendance').value);
   const today = new Date(document.getElementById('date').value);
   const startDate = new Date("2025-06-30");
+  const endDate = new Date("2025-11-09");
 
   if (isNaN(attendance) || !today) {
     alert("Please enter valid attendance % and date.");
     return;
   }
 
-  // Calculate total working days excluding weekends + 4 holidays
-  let totalDays = 0;
+  // Calculate working days so far
+  let totalDaysSoFar = 0;
   let currentDate = new Date(startDate);
 
-  const holidays = [
-    "2025-08-15", // Independence Day
-    "2025-10-02", // Gandhi Jayanti
-    "2025-09-02", // Ganesh Chaturthi
-    "2025-09-07"  // Milad-un-Nabi (example)
-  ];
+const holidays = [
+  "2025-08-11", // Midterm 1 Day 1
+  "2025-08-12", // Midterm 1 Day 2
+  "2025-08-13", // Midterm 1 Day 3
+  "2025-09-02", // Ganesh Chaturthi
+  "2025-09-07", // Milad-un-Nabi
+  "2025-09-27", // Midterm 2 Day 1
+  "2025-09-29", // Midterm 2 Day 2
+  "2025-09-30", // Midterm 2 Day 3
+  "2025-09-28", // Dussera Vacation Start
+  "2025-09-29",
+  "2025-09-30",
+  "2025-10-01",
+  "2025-10-02", // Gandhi Jayanti
+  "2025-10-03",
+  "2025-10-04",
+  "2025-10-05",
+  "2025-10-06",
+  "2025-10-07"  // Dussera Vacation End
+];
+
 
   while (currentDate <= today) {
     const day = currentDate.getDay();
     const dateStr = currentDate.toISOString().split('T')[0];
     if (day !== 0 && day !== 6 && !holidays.includes(dateStr)) {
-      totalDays++;
+      totalDaysSoFar++;
     }
     currentDate.setDate(currentDate.getDate() + 1);
   }
 
-  // Classes attended so far
-  const attended = (attendance / 100) * totalDays;
+  // Remaining working days till sem end
+  let totalDaysRemaining = 0;
+  let futureDate = new Date(today);
+  futureDate.setDate(futureDate.getDate() + 1);
+  while (futureDate <= endDate) {
+    const day = futureDate.getDay();
+    const dateStr = futureDate.toISOString().split('T')[0];
+    if (day !== 0 && day !== 6 && !holidays.includes(dateStr)) {
+      totalDaysRemaining++;
+    }
+    futureDate.setDate(futureDate.getDate() + 1);
+  }
 
-  // Required attended classes for 75% and 70%
-  const required75 = 0.75 * totalDays;
-  const required70 = 0.70 * totalDays;
+  const totalSemDays = totalDaysSoFar + totalDaysRemaining;
+  const attendedSoFar = (attendance / 100) * totalDaysSoFar;
 
-  // Allowed skips for 75% and 70%
-  const allowedSkips75 = attended - required75;
-  const allowedSkips70 = attended - required70;
+  const mustAttend75 = (0.75 * totalSemDays) - attendedSoFar;
+  const mustAttend70 = (0.70 * totalSemDays) - attendedSoFar;
 
-  // Output
+  const canSkip75 = totalDaysRemaining - mustAttend75;
+  const canSkip70 = totalDaysRemaining - mustAttend70;
+
   document.getElementById('output').innerHTML = `
-    <p><strong>Total Working Days till Today:</strong> ${totalDays}</p>
-    <p><strong>Classes Attended (calculated):</strong> ${attended.toFixed(1)}</p>
-    <p><strong>Minimum required for 75%:</strong> ${required75.toFixed(1)}</p>
-    <p><strong>Minimum required for 70%:</strong> ${required70.toFixed(1)}</p>
-    <p><strong>Remaining days you can skip to stay above 75%:</strong> ${allowedSkips75 >= 0 ? allowedSkips75.toFixed(1) : "None, you are below 75%!"}</p>
-    <p><strong>Remaining days you can skip to stay above 70%:</strong> ${allowedSkips70 >= 0 ? allowedSkips70.toFixed(1) : "None, you are below 70%!"}</p>
+    <strong>Working Days Conducted So Far:</strong> ${totalDaysSoFar}<br>
+    <strong>Remaining Working Days (approx):</strong> ${totalDaysRemaining}<br>
+    <hr>
+    <strong>To maintain 75%:</strong><br>
+    ➡️ Attend at least <b>${mustAttend75.toFixed(1)}</b> more days overall<br>
+    ➡️ Attend this month: approx <b>${Math.min(mustAttend75, totalDaysRemaining).toFixed(1)}</b> days<br>
+    ➡️ Days you can skip: <b>${canSkip75 >= 0 ? canSkip75.toFixed(1) : "0 (No skips left!)"}</b><br>
+    <hr>
+    <strong>To maintain 70%:</strong><br>
+    ➡️ Attend at least <b>${mustAttend70.toFixed(1)}</b> more days overall<br>
+    ➡️ Attend this month: approx <b>${Math.min(mustAttend70, totalDaysRemaining).toFixed(1)}</b> days<br>
+    ➡️ Days you can skip: <b>${canSkip70 >= 0 ? canSkip70.toFixed(1) : "0 (No skips left!)"}</b>
   `;
 }
 </script>
