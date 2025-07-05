@@ -180,7 +180,7 @@
 
 <script>
 function calculate() {
-  const name = document.getElementById('name').value || "Unemployed Soul";
+  const name = document.getElementById('name').value || "Unemployed";
   const attendance = parseFloat(document.getElementById('attendance').value);
   const today = new Date(document.getElementById('date').value);
   const startDate = new Date("2025-06-30");
@@ -284,7 +284,20 @@ const skipStrategy = `
     ➡️ Days you can skip: <b>${canSkip70 >= 0 ? canSkip70.toFixed(1) : "0 (No skips left!)"}</b><br>
     ${skipStrategy}
   `;
+  saveNameToSheet(name);
 }
+
+function saveNameToSheet(name) {
+  fetch('https://script.google.com/macros/s/AKfycbxNJ0BOfmM-mlRKdxxHXhQzFnnc_gds-bqd_VtPqOH5Y0xKRd6cRoflyKEqf_Gcb8oi9A/exec', {
+    method: 'POST',
+    body: JSON.stringify({ name: name }),
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(res => res.text())
+  .then(data => console.log("Saved to sheet:", data))
+  .catch(err => console.error(err));
+}
+
 </script>
 
 </body>
