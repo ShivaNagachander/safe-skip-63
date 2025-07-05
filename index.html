@@ -5,17 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OnE Last Sem JINDABAD</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f8f8f8; margin: 0; padding: 0; }
-    nav { background: #333; color: #fff; padding: 15px; text-align: center; font-size: 18px; }
-    .container { max-width: 800px; margin: auto; background: #fff; padding: 30px; box-shadow: 0 0 10px #aaa; margin-top: 20px; }
-    h1 { text-align: center; }
-    input, button { width: 100%; padding: 12px; margin: 10px 0; font-size: 16px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 30px; }
-    th, td { border: 1px solid #999; padding: 8px; text-align: center; }
-    th { background: #eee; }
-    p { background: #f2f2f2; padding: 10px; border-left: 4px solid #333; }
-    footer { text-align: center; margin: 20px; color: #777; }
-    .output-box { background: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin-top: 20px; border-radius: 5px; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      background: #333;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      box-shadow: 0 0 10px #aaa;
+      margin-top: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      background: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #555;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      overflow-x: auto;
+      display: block;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background: #eee;
+    }
+    p {
+      background: #f2f2f2;
+      padding: 10px;
+      border-left: 4px solid #333;
+    }
+    footer {
+      text-align: center;
+      margin: 20px;
+      color: #777;
+    }
+    .output-box {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+    @media (max-width: 600px) {
+      nav { font-size: 16px; }
+      .container { padding: 20px; }
+      th, td { font-size: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -23,9 +92,11 @@
 <nav>OnE Last Sem JINDABAD</nav>
 
 <div class="container">
-  <p>Attendance is trauma, life is homa, job is coma, people are dumma,college is chumma</p>
+  <p>Attendance is trauma, life is homa, job is coma, people are dumma, college is chumma</p>
   <p>The prediction in this website is not accurate as your chatgpt prompt and social life</p>
-  
+
+  <label>Enter Name:</label>
+  <input type="text" id="name" placeholder="Your name">
 
   <label>Enter Current Attendance % :</label>
   <input type="number" id="attendance" placeholder="e.g. 78.5">
@@ -38,68 +109,70 @@
   <div id="output" class="output-box"></div>
 
   <h2>Your Timetable</h2>
-  <table>
-    <tr>
-      <th>Day/Time</th>
-      <th>09:00-09:55</th>
-      <th>09:55-10:50</th>
-      <th>10:50-11:45</th>
-      <th>11:45-12:40</th>
-      <th>12:40-01:25</th>
-      <th>01:25-02:15</th>
-      <th>02:15-03:10</th>
-    </tr>
-    <tr>
-      <td>Monday</td>
-      <td>DL</td>
-      <td>DL LAB</td>
-      <td>DL LAB</td>
-      <td>DL LAB</td>
-      <td>Lunch</td>
-      <td>CIS</td>
-      <td>PM</td>
-    </tr>
-    <tr>
-      <td>Tuesday</td>
-      <td>MEFA</td>
-      <td>FBT</td>
-      <td>CIS</td>
-      <td>DL</td>
-      <td>Lunch</td>
-      <td>FCC</td>
-      <td>PM</td>
-    </tr>
-    <tr>
-      <td>Wednesday</td>
-      <td>FBT</td>
-      <td>CIS</td>
-      <td>DL</td>
-      <td>FCC</td>
-      <td>Lunch</td>
-      <td>MEFA</td>
-      <td>PM</td>
-    </tr>
-    <tr>
-      <td>Thursday</td>
-      <td>FBT</td>
-      <td>MEFA</td>
-      <td>FCC</td>
-      <td>DL</td>
-      <td>Lunch</td>
-      <td>IOMP</td>
-      <td>IOMP</td>
-    </tr>
-    <tr>
-      <td>Friday</td>
-      <td>CIS</td>
-      <td>CIS LAB</td>
-      <td>CIS LAB</td>
-      <td>CIS LAB</td>
-      <td>Lunch</td>
-      <td>IOMP</td>
-      <td>IOMP</td>
-    </tr>
-  </table>
+  <div style="overflow-x:auto;">
+    <table>
+      <tr>
+        <th>Day/Time</th>
+        <th>09:00-09:55</th>
+        <th>09:55-10:50</th>
+        <th>10:50-11:45</th>
+        <th>11:45-12:40</th>
+        <th>12:40-01:25</th>
+        <th>01:25-02:15</th>
+        <th>02:15-03:10</th>
+      </tr>
+      <tr>
+        <td>Monday</td>
+        <td>DL</td>
+        <td>DL LAB</td>
+        <td>DL LAB</td>
+        <td>DL LAB</td>
+        <td>Lunch</td>
+        <td>CIS</td>
+        <td>PM</td>
+      </tr>
+      <tr>
+        <td>Tuesday</td>
+        <td>MEFA</td>
+        <td>FBT</td>
+        <td>CIS</td>
+        <td>DL</td>
+        <td>Lunch</td>
+        <td>FCC</td>
+        <td>PM</td>
+      </tr>
+      <tr>
+        <td>Wednesday</td>
+        <td>FBT</td>
+        <td>CIS</td>
+        <td>DL</td>
+        <td>FCC</td>
+        <td>Lunch</td>
+        <td>MEFA</td>
+        <td>PM</td>
+      </tr>
+      <tr>
+        <td>Thursday</td>
+        <td>FBT</td>
+        <td>MEFA</td>
+        <td>FCC</td>
+        <td>DL</td>
+        <td>Lunch</td>
+        <td>IOMP</td>
+        <td>IOMP</td>
+      </tr>
+      <tr>
+        <td>Friday</td>
+        <td>CIS</td>
+        <td>CIS LAB</td>
+        <td>CIS LAB</td>
+        <td>CIS LAB</td>
+        <td>Lunch</td>
+        <td>IOMP</td>
+        <td>IOMP</td>
+      </tr>
+    </table>
+  </div>
 
 </div>
 
@@ -107,41 +180,25 @@
 
 <script>
 function calculate() {
+  const name = document.getElementById('name').value || "Unemployed Soul";
   const attendance = parseFloat(document.getElementById('attendance').value);
   const today = new Date(document.getElementById('date').value);
   const startDate = new Date("2025-06-30");
   const endDate = new Date("2025-11-09");
 
-  if (isNaN(attendance) || !today) {
-    alert("Please enter valid attendance % and date.");
+  if (!name || isNaN(attendance) || !today) {
+    alert("Please enter valid name, attendance %, and date.");
     return;
   }
 
-  // Calculate working days so far
   let totalDaysSoFar = 0;
   let currentDate = new Date(startDate);
 
-const holidays = [
-  "2025-08-11", // Midterm 1 Day 1
-  "2025-08-12", // Midterm 1 Day 2
-  "2025-08-13", // Midterm 1 Day 3
-  "2025-09-02", // Ganesh Chaturthi
-  "2025-09-07", // Milad-un-Nabi
-  "2025-09-27", // Midterm 2 Day 1
-  "2025-09-29", // Midterm 2 Day 2
-  "2025-09-30", // Midterm 2 Day 3
-  "2025-09-28", // Dussera Vacation Start
-  "2025-09-29",
-  "2025-09-30",
-  "2025-10-01",
-  "2025-10-02", // Gandhi Jayanti
-  "2025-10-03",
-  "2025-10-04",
-  "2025-10-05",
-  "2025-10-06",
-  "2025-10-07"  // Dussera Vacation End
-];
-
+  const holidays = [
+    "2025-08-11","2025-08-12","2025-08-13","2025-09-02","2025-09-07",
+    "2025-09-27","2025-09-29","2025-09-30","2025-09-28","2025-10-01",
+    "2025-10-02","2025-10-03","2025-10-04","2025-10-05","2025-10-06","2025-10-07"
+  ];
 
   while (currentDate <= today) {
     const day = currentDate.getDay();
@@ -152,7 +209,6 @@ const holidays = [
     currentDate.setDate(currentDate.getDate() + 1);
   }
 
-  // Remaining working days till sem end
   let totalDaysRemaining = 0;
   let futureDate = new Date(today);
   futureDate.setDate(futureDate.getDate() + 1);
@@ -174,19 +230,59 @@ const holidays = [
   const canSkip75 = totalDaysRemaining - mustAttend75;
   const canSkip70 = totalDaysRemaining - mustAttend70;
 
+  // Class skipping strategy effect approximation
+  const classesPerDay = 6;
+  const perClassPercent = 100 / (totalSemDays * classesPerDay);
+// Skip suggestions by day
+const timetable = {
+  Monday: ["DL", "DL LAB", "DL LAB", "DL LAB", "Lunch", "CIS", "PM"],
+  Tuesday: ["MEFA", "FBT", "CIS", "DL", "Lunch", "FCC", "PM"],
+  Wednesday: ["FBT", "CIS", "DL", "FCC", "Lunch", "MEFA", "PM"],
+  Thursday: ["FBT", "MEFA", "FCC", "DL", "Lunch", "IOMP", "IOMP"],
+  Friday: ["CIS", "CIS LAB", "CIS LAB", "CIS LAB", "Lunch", "IOMP", "IOMP"],
+};
+
+let skipSuggestions = "<br><strong>Suggested Days to Skip:</strong><br>";
+
+for (const [day, classes] of Object.entries(timetable)) {
+  // Count labs and lectures for suggestion priority
+  const labCount = classes.filter(sub => sub.includes("LAB")).length;
+  const lectureCount = classes.length - labCount - 1; // excluding Lunch
+
+  // Prefer days with fewer labs
+  if (labCount === 0) {
+    skipSuggestions += `✅ <b>${day}</b>: Mostly lectures, safer to skip<br>`;
+  } else if (labCount <= 1) {
+    skipSuggestions += `⚠️ <b>${day}</b>: Has ${labCount} lab, skip with caution<br>`;
+  } else {
+    skipSuggestions += `❌ <b>${day}</b>: Has multiple labs, avoid skipping<br>`;
+  }
+}
+
+const skipStrategy = `
+  <br><strong>Skipping Strategy (approx effect per class skipped):</strong><br>
+  📝 Skipping a lab (3 periods): ~${(perClassPercent*3).toFixed(2)}% decrease<br>
+  📝 Skipping a single lecture: ~${perClassPercent.toFixed(2)}% decrease<br>
+  ⚠️ Labs weigh more, prefer skipping non-lab theory classes if needed.
+  ${skipSuggestions}
+`;
+
+
   document.getElementById('output').innerHTML = `
+    Hi unemployed <b>${name}</b> 👋<br><br>
     <strong>Working Days Conducted So Far:</strong> ${totalDaysSoFar}<br>
     <strong>Remaining Working Days (approx):</strong> ${totalDaysRemaining}<br>
     <hr>
     <strong>To maintain 75%:</strong><br>
     ➡️ Attend at least <b>${mustAttend75.toFixed(1)}</b> more days overall<br>
-    ➡️ Attend this month: approx <b>${Math.min(mustAttend75, totalDaysRemaining).toFixed(1)}</b> days<br>
-    ➡️ Days you can skip: <b>${canSkip75 >= 0 ? canSkip75.toFixed(1) : "0 (No skips left!)"}</b><br>
+    ➡️ Attend this sem: approx <b>${Math.min(mustAttend75, totalDaysRemaining).toFixed(1)}</b> days<br>
+    ➡️ Days you can skip: <b>${canSkip75 >= 0 ? canSkip75.toFixed(1) : "0 (No skips left!)"}</b><br> 
     <hr>
     <strong>To maintain 70%:</strong><br>
     ➡️ Attend at least <b>${mustAttend70.toFixed(1)}</b> more days overall<br>
-    ➡️ Attend this month: approx <b>${Math.min(mustAttend70, totalDaysRemaining).toFixed(1)}</b> days<br>
-    ➡️ Days you can skip: <b>${canSkip70 >= 0 ? canSkip70.toFixed(1) : "0 (No skips left!)"}</b>
+    ➡️ Attend this sem: approx <b>${Math.min(mustAttend70, totalDaysRemaining).toFixed(1)}</b> days<br>
+    ➡️ Days you can skip: <b>${canSkip70 >= 0 ? canSkip70.toFixed(1) : "0 (No skips left!)"}</b><br>
+    ${skipStrategy}
   `;
 }
 </script>
